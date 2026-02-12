@@ -60,6 +60,15 @@ No test framework is configured yet.
 - `@/*` path alias maps to the project root (configured in `tsconfig.json`)
 - Focus timer state is ephemeral — does not survive page refresh (by design)
 
+### Quality & Development Standards (from constitution v1.1.0)
+
+- **Code Quality**: DRY principles, no `any` types, no `@ts-ignore`. Business logic centralized in `lib/`, components are pure UI (props in, callbacks out)
+- **TDD**: Write failing tests first, then implement, then refactor. All `lib/` functions and component behaviors must have tests. Tests must pass before committing
+- **UX Consistency**: Consistent hover/focus/active/disabled states, no layout shifts, explicit empty/error states, 4px/8px grid spacing
+- **Performance**: < 2s interactive load, minimize re-renders, localStorage reads only on mount, Lighthouse 90+, zero build warnings
+- **Commit Discipline**: Commit after every logical unit of work. Run lint + build + tests before committing. Use conventional commits (`feat:`, `fix:`, `refactor:`, `test:`)
+- **SpecKit Workflow**: All features must follow analyze → specify → plan → tasks → implement → checklist sequence
+
 ## SpecKit Workflow
 
 The `daily-focus-planner/.claude/commands/` directory contains SpecKit slash commands (`speckit.analyze`, `speckit.specify`, `speckit.plan`, `speckit.implement`, `speckit.tasks`, `speckit.checklist`, `speckit.clarify`, `speckit.constitution`, `speckit.taskstoissues`). These follow a spec-driven development workflow. Templates live in `.specify/templates/`.
